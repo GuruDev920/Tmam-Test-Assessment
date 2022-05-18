@@ -5,11 +5,11 @@ import { IUseUploadFile } from '@hooks/useUploadFile';
 import { ArrowButton, Title, MainContainer } from '../../components';
 import { STRINGS, COLORS, SCREENS } from '../../constants';
 
-export interface IPreviewScreen {
+export interface IPreviewFrontScreen {
     fileInfo: IUseUploadFile;
 }
 
-const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
+const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
     const { navigate, goBack } = useNavigation();
     return (
         <MainContainer id='preview-screen'>
@@ -36,7 +36,7 @@ const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
                     testID='preview-next'
                     back={false}
                     onPress={() => { 
-                        navigate(SCREENS.CAPTUREFRONT);
+                        navigate(SCREENS.UPLOAD)
                     }}
                 />
             </View>
@@ -44,7 +44,7 @@ const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
     )
 }
 
-export default PreviewScreen;
+export default PreviewFrontScreen;
 
 const styles = StyleSheet.create({
     container: {

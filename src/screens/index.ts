@@ -1,4 +1,6 @@
 export * from './welcome';
 export * from './capture';
 export * from './preview';
-export * from './home';
+export * from './captureFront';
+export * from './previewFront';
+export * from './upload';

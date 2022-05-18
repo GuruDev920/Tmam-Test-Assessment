@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {SCREENS} from '../constants';
 import {COLORS} from '../constants/colors';
 import {AppNavigatorParamList} from '../models/navigation';
-import {Welcome, Capture, Preview, Home} from '../screens';
+import {Welcome, Capture, Preview, CaptureFront, PreviewFront, Upload} from '../screens';
 
 const Stack = createStackNavigator<AppNavigatorParamList>();
 
@@ -22,7 +22,9 @@ export const AppNavigator = () => {
         <Stack.Screen name={SCREENS.WELCOME} component={Welcome} />
         <Stack.Screen name={SCREENS.CAPTURE} component={Capture} />
         <Stack.Screen name={SCREENS.PREVIEW} component={Preview} />
-        <Stack.Screen name={SCREENS.HOME} component={Home} />
+        <Stack.Screen name={SCREENS.CAPTUREFRONT} component={CaptureFront} />
+        <Stack.Screen name={SCREENS.PREVIEWFRONT} component={PreviewFront} />
+        <Stack.Screen name={SCREENS.UPLOAD} component={Upload} />
       </Stack.Navigator>
     </NavigationContainer>
   );
