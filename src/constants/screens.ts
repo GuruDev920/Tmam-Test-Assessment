@@ -5,6 +5,5 @@ export enum SCREENS {
     CAPTUREFRONT = 'CaptureFront',
     PREVIEWFRONT = 'PreviewFront',
     UPLOAD = 'Upload',
-    HOME = 'Home',
   }
   
