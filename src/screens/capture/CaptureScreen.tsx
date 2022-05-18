@@ -28,13 +28,14 @@ const CaptureScreen = ({ fileInfo }: ICaptureScreen) => {
     );
 
     async function takePhoto() {
-        try {
-            if (camera.current == null) throw new Error('Camera ref is null!');
-            console.log('Taking photo...');
-            const photo = await camera.current.takePhoto(takePhotoOptions);
-        } catch (e) {
-            console.error('Failed to take photo!', e);
-        }
+        navigate(SCREENS.PREVIEW);
+        // try {
+        //     if (camera.current == null) throw new Error('Camera ref is null!');
+        //     console.log('Taking photo...');
+        //     const photo = await camera.current.takePhoto(takePhotoOptions);
+        // } catch (e) {
+        //     console.error('Failed to take photo!', e);
+        // }
     }
 
     useEffect(() => {
@@ -66,8 +67,8 @@ const CaptureScreen = ({ fileInfo }: ICaptureScreen) => {
                 isActive={true}
             />
             <CustomButton
-                testID='next'
-                name={STRINGS.next}
+                testID='capture-back'
+                name={STRINGS.capture}
                 onPress={takePhoto}
             />
         </MainContainer>

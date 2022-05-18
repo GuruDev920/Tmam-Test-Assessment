@@ -1,6 +1,7 @@
 export const STRINGS = {
   welcome: 'Welcome',
   start: 'Start',
+  capture: 'Capture',
   captureId: 'Capture ID',
   next: 'Next',
   preview: 'Preview',

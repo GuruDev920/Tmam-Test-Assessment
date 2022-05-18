@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
         width: '100%',
         textAlign: 'center',
         textAlignVertical: 'center',
-        padding: 30,
+        padding: 20,
     },
 });

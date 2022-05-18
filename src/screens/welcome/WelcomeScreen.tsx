@@ -1,14 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { SafeAreaView, Text, StyleSheet, View } from 'react-native';
-import { CustomButton, Title } from '../../components';
+import { Text, StyleSheet, View } from 'react-native';
+import { MainContainer, CustomButton, Title } from '../../components';
 import { STRINGS, SCREENS } from '../../constants';
 import { Camera } from 'react-native-vision-camera';
 
 const WelcomeScreen = () => {
     const { navigate, goBack } = useNavigation()
     return (
-        <SafeAreaView testID='welcome-screen' style={styles.container}>
+        <MainContainer id='welcome-screen'>
             <Title
                 testID='welcome-title'
                 name={STRINGS.welcome}
@@ -25,7 +25,7 @@ const WelcomeScreen = () => {
                     navigate(SCREENS.CAPTURE)
                 }}
             />
-        </SafeAreaView>
+        </MainContainer>
     )
 }
 
