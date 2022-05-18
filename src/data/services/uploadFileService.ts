@@ -4,15 +4,22 @@ import {IFile} from '../../models';
 import {ENV} from '../../tmam-export';
 
 export const uploadFileService = async (
-  file: IFile,
+  photo: string,
+  selfie:string,
   progressCallback: (progress: number) => void,
 ) => {
   const formData = new FormData();
   formData.append('file', {
-    name: file.name,
-    type: file.type,
+    name: 'photo',
+    type: 'image/png',
     uri:
-      Platform.OS === 'android' ? file.path : file.path.replace('file://', ''),
+      Platform.OS === 'android' ? photo : photo.replace('file://', ''),
+  });
+  formData.append('selfie', {
+    name: 'photo',
+    type: 'image/png',
+    uri:
+      Platform.OS === 'android' ? selfie : selfie.replace('file://', ''),
   });
   const response = await Axios.post(`${ENV.API_URL}/add`, formData, {
     headers: {

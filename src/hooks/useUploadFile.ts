@@ -5,34 +5,28 @@ import {IFile} from '../models';
 import {showAlert} from '../utils/alert';
 import {pickFile} from '../utils/file-picker';
 import {handlePhotoLibraryPermission} from '../utils/permission';
+import { useAppContext } from './useApp';
 
 export interface IUseUploadFile {
-  file: IFile | undefined;
   progress: number;
   uploading: boolean;
-  pickFileFromLibrary: () => void;
+ 
   uploadFile: () => void;
 }
 export const useUploadFile = (): IUseUploadFile => {
-  const [file, setFile] = useState<IFile | undefined>();
+
   const [progress, setProgress] = useState<number>(0);
   const [uploading, setUploading] = useState<boolean>(false);
-
-  const pickFileFromLibrary = () => {
-    handlePhotoLibraryPermission(async () => {
-      const response: any = await pickFile();
-      setFile(response);
-    });
-  };
-
+  const {photo, selfie} = useAppContext();
+  
   const uploadFile = async () => {
-    if (!file) {
+    if (!photo||!selfie) {
       return;
     }
     try {
       setProgress(0);
       setUploading(true);
-      await uploadFileService(file, status => {
+      await uploadFileService(photo, selfie,  status => {
         setProgress(status);
       });
       setTimeout(() => {
@@ -49,10 +43,8 @@ export const useUploadFile = (): IUseUploadFile => {
   };
 
   return {
-    file,
     progress,
     uploading,
-    pickFileFromLibrary,
     uploadFile,
   };
 };

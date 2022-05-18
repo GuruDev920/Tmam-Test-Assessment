@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useMemo } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView, Text, StyleSheet, View } from 'react-native';
+import { useAppContext } from '@hooks/useApp';
 import { IUseUploadFile } from '@hooks/useUploadFile';
-import { CustomButton, Title, MainContainer } from '../../components';
-import { Camera, useCameraDevices, TakePhotoOptions, TakeSnapshotOptions } from 'react-native-vision-camera';
-import { STRINGS, COLORS, SCREENS } from '../../constants';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
+import React, { useMemo, useRef } from 'react';
+import { Platform, StyleSheet } from 'react-native';
+import { Camera, TakePhotoOptions, TakeSnapshotOptions, useCameraDevices } from 'react-native-vision-camera';
+import { CustomButton, MainContainer, Title } from '../../components';
+import { SCREENS, STRINGS } from '../../constants';
 
 export interface ICaptureFrontScreen {
     fileInfo: IUseUploadFile;
@@ -14,6 +15,7 @@ const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
     const devices = useCameraDevices('wide-angle-camera');
     const device = devices.front;
     const { navigate, goBack } = useNavigation();
+    const { setSelfie } = useAppContext();
     const camera = useRef<Camera>(null);
     const flash = 'on'
     const takePhotoOptions = useMemo<TakePhotoOptions & TakeSnapshotOptions>(
@@ -26,32 +28,19 @@ const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
         }),
         [flash],
     );
-
+    const isFocused = useIsFocused();
     async function takePhoto() {
-        navigate(SCREENS.PREVIEWFRONT);
-        // try {
-        //     if (camera.current == null) throw new Error('Camera ref is null!');
-        //     console.log('Taking photo...');
-        //     const photo = await camera.current.takePhoto(takePhotoOptions);
-        // } catch (e) {
-        //     console.error('Failed to take photo!', e);
-        // }
+        try {
+            if (camera.current == null) throw new Error('Camera ref is null!');
+            console.log('Taking photo...');
+            const photo = await camera.current.takePhoto(takePhotoOptions);
+            setSelfie(Platform.OS === 'android' ? `file://${photo.path}` : photo.path);
+            navigate(SCREENS.PREVIEWFRONT);
+        } catch (e) {
+            console.error('Failed to take photo!', e);
+        }
     }
-
-    useEffect(() => {
-        const requestCameraPermission = async () => {
-            await Camera.requestCameraPermission()
-        }
-        const checkCameraPermission = async () => {
-            await Camera.getCameraPermissionStatus().then((status) => {
-                if (status == 'authorized') {
-                    requestCameraPermission()
-                }
-            })
-        }
-        checkCameraPermission();
-    }, [])
-
+    
     if (device == null) return null
     return (
         <MainContainer id='capture-front-screen'>
@@ -64,7 +53,8 @@ const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
                 ref={camera}
                 style={styles.camera}
                 device={device}
-                isActive={true}
+                isActive={isFocused}
+                photo={true}
             />
             <CustomButton
                 testID='capture-back'
@@ -78,9 +68,6 @@ const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
 export default CaptureScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1
-    },
     camera: {
         flexGrow: 1,
     }

@@ -1,17 +1,12 @@
 import React from 'react';
-import UploadScreen, {IUploadScreen} from './UploadScreen';
-import { IUseUploadFile, useUploadFile } from '@hooks/useUploadFile';
+import UploadScreen from './UploadScreen';
 
 /*
 Here, please do define the contollders && handlers
 */
 
 const UploadPresenter = () => {
-  const fileInfo: IUseUploadFile = useUploadFile();
-  const uploadScreenProps: IUploadScreen = {
-    fileInfo,
-  };
-  return <UploadScreen {...uploadScreenProps} />;
+  return <UploadScreen />;
 };
 
 export default UploadPresenter;

@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useMemo } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { Text, StyleSheet, View } from 'react-native';
+import { useAppContext } from '@hooks/useApp';
 import { IUseUploadFile } from '@hooks/useUploadFile';
-import { ArrowButton, Title, MainContainer } from '../../components';
-import { STRINGS, COLORS, SCREENS } from '../../constants';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { ArrowButton, MainContainer, Title } from '../../components';
+import { SCREENS, STRINGS } from '../../constants';
 
 export interface IPreviewScreen {
     fileInfo: IUseUploadFile;
@@ -11,14 +12,16 @@ export interface IPreviewScreen {
 
 const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
     const { navigate, goBack } = useNavigation();
+    const { photo } = useAppContext();
     return (
         <MainContainer id='preview-screen'>
             <Title
                 testID='preview-title'
                 name={STRINGS.preview}
             />
-            <View
+            <Image
                 testID='preview-image'
+                source={{ uri:photo }}
                 style={styles.image}
             />
             <View
@@ -28,14 +31,14 @@ const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
                 <ArrowButton
                     testID='preview-back'
                     back={true}
-                    onPress={() => { 
+                    onPress={() => {
                         goBack()
                     }}
                 />
                 <ArrowButton
                     testID='preview-next'
                     back={false}
-                    onPress={() => { 
+                    onPress={() => {
                         navigate(SCREENS.CAPTUREFRONT);
                     }}
                 />
@@ -47,12 +50,8 @@ const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
 export default PreviewScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1
-    },
     image: {
-        flexGrow: 1,
-        backgroundColor: 'red',
+        flexGrow:1
     },
     buttons: {
         flexDirection: 'row',

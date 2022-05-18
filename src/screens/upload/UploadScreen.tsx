@@ -1,29 +1,27 @@
+import { useAppContext } from '@hooks/useApp';
+import { IUseUploadFile, useUploadFile } from '@hooks/useUploadFile';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import { IUseUploadFile } from '@hooks/useUploadFile';
-import { MainContainer, CustomButton, Title } from '../../components';
-import { STRINGS, SCREENS } from '../../constants';
+import { StyleSheet, View } from 'react-native';
 import { Circle } from 'react-native-progress';
+import { CustomButton, MainContainer, Title } from '../../components';
+import { STRINGS } from '../../constants';
 
-export interface IUploadScreen {
-    fileInfo: IUseUploadFile;
-}
 
-const UploadScreen = ({ fileInfo }: IUploadScreen) => {
-    const { navigate, goBack } = useNavigation()
+
+const UploadScreen = () => {
+    const {progress, uploading, uploadFile}= useUploadFile();
     return (
         <MainContainer id='upload-screen'>
             <Title
                 testID='upload-title'
                 name={STRINGS.upload}
-                style={styles.title}
             />
             <View
                 style={styles.progress}
             >
                 <Circle
-                    progress={fileInfo.progress}
+                    progress={progress}
                     size={100}
                     showsText
                     formatText={status => `${(status * 100).toFixed(0)} %`}
@@ -31,9 +29,9 @@ const UploadScreen = ({ fileInfo }: IUploadScreen) => {
             </View>
             <CustomButton
                 testID='done'
-                name={fileInfo.uploading ? STRINGS.upload : STRINGS.done}
+                name={uploading ? STRINGS.upload : STRINGS.done}
                 onPress={() => {
-
+                    uploadFile();
                 }}
             />
         </MainContainer>
@@ -47,8 +45,5 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    title: {
-        textAlignVertical: 'center',
     },
 });

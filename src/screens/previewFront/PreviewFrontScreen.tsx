@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, Image } from 'react-native';
 import { IUseUploadFile } from '@hooks/useUploadFile';
 import { ArrowButton, Title, MainContainer } from '../../components';
 import { STRINGS, COLORS, SCREENS } from '../../constants';
+import { useAppContext } from '@hooks/useApp';
 
 export interface IPreviewFrontScreen {
     fileInfo: IUseUploadFile;
@@ -11,14 +12,16 @@ export interface IPreviewFrontScreen {
 
 const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
     const { navigate, goBack } = useNavigation();
+    const { selfie } = useAppContext();
     return (
         <MainContainer id='preview-screen'>
             <Title
                 testID='preview-title'
                 name={STRINGS.preview}
             />
-            <View
-                testID='preview-image'
+            <Image
+                testID='preview-image-front'
+                source={{ uri:selfie }}
                 style={styles.image}
             />
             <View
@@ -47,12 +50,8 @@ const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
 export default PreviewFrontScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1
-    },
     image: {
         flexGrow: 1,
-        backgroundColor: 'red',
     },
     buttons: {
         flexDirection: 'row',
