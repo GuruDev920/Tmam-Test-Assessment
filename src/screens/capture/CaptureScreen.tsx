@@ -6,13 +6,14 @@ import { CustomButton, Title, MainContainer } from '../../components';
 import { Camera, useCameraDevices, TakePhotoOptions, TakeSnapshotOptions } from 'react-native-vision-camera';
 import { STRINGS, COLORS, SCREENS } from '../../constants';
 import { useAppContext } from '@hooks/useApp';
+import { useAppNavigation } from '@navigation/AppNavigator';
 
 
 
 const CaptureScreen = () => {
     const devices = useCameraDevices('wide-angle-camera');
     const device = devices.back;
-    const { navigate, goBack } = useNavigation();
+    const { navigate } = useAppNavigation();
     const { setPhoto } = useAppContext();
     const camera = useRef<Camera>(null);
     const flash = 'on'

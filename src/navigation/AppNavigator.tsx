@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { SCREENS } from '../constants';
 import { COLORS } from '../constants/colors';
 import { AppNavigatorParamList } from '../models/navigation';
@@ -8,6 +8,7 @@ import { Welcome, Capture, Preview, CaptureFront, PreviewFront, Upload } from '.
 import { AppContext, useApp } from '@hooks/useApp';
 
 const Stack = createStackNavigator<AppNavigatorParamList>();
+export const useAppNavigation=()=>useNavigation<StackNavigationProp<AppNavigatorParamList>>();
 
 export const AppNavigator = () => {
   const data = useApp();

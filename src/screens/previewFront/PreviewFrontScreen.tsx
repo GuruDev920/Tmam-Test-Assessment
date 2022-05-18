@@ -5,13 +5,14 @@ import { IUseUploadFile } from '@hooks/useUploadFile';
 import { ArrowButton, Title, MainContainer } from '../../components';
 import { STRINGS, COLORS, SCREENS } from '../../constants';
 import { useAppContext } from '@hooks/useApp';
+import { useAppNavigation } from '@navigation/AppNavigator';
 
 export interface IPreviewFrontScreen {
     fileInfo: IUseUploadFile;
 }
 
 const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
-    const { navigate, goBack } = useNavigation();
+    const { navigate, goBack } = useAppNavigation();
     const { selfie } = useAppContext();
     return (
         <MainContainer id='preview-screen'>

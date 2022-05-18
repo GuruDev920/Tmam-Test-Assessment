@@ -1,5 +1,6 @@
 import { useAppContext } from '@hooks/useApp';
 import { IUseUploadFile } from '@hooks/useUploadFile';
+import { useAppNavigation } from '@navigation/AppNavigator';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
@@ -11,7 +12,7 @@ export interface IPreviewScreen {
 }
 
 const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
-    const { navigate, goBack } = useNavigation();
+    const { navigate, goBack } = useAppNavigation();
     const { photo } = useAppContext();
     return (
         <MainContainer id='preview-screen'>

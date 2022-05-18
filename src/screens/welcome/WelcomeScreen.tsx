@@ -4,9 +4,10 @@ import { Text, StyleSheet, View } from 'react-native';
 import { MainContainer, CustomButton, Title } from '../../components';
 import { STRINGS, SCREENS } from '../../constants';
 import { Camera } from 'react-native-vision-camera';
+import { useAppNavigation } from '@navigation/AppNavigator';
 
 const WelcomeScreen = () => {
-    const { navigate, goBack } = useNavigation()
+    const { navigate, goBack } = useAppNavigation()
     return (
         <MainContainer id='welcome-screen'>
             <Title

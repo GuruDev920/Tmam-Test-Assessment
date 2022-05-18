@@ -1,5 +1,6 @@
 import { useAppContext } from '@hooks/useApp';
 import { IUseUploadFile } from '@hooks/useUploadFile';
+import { useAppNavigation } from '@navigation/AppNavigator';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import React, { useMemo, useRef } from 'react';
 import { Platform, StyleSheet } from 'react-native';
@@ -14,7 +15,7 @@ export interface ICaptureFrontScreen {
 const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
     const devices = useCameraDevices('wide-angle-camera');
     const device = devices.front;
-    const { navigate, goBack } = useNavigation();
+    const { navigate, goBack } = useAppNavigation();
     const { setSelfie } = useAppContext();
     const camera = useRef<Camera>(null);
     const flash = 'on'
