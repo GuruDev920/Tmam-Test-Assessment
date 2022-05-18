@@ -1,4 +1,9 @@
 export const STRINGS = {
+  welcome: 'Welcome',
+  start: 'Start',
+  captureId: 'Capture ID',
+  next: 'Next',
+  preview: 'Preview',
   selectFile: 'Select File',
   uploadSelectedFile: 'Upload Selected File',
   ok: 'OK',
