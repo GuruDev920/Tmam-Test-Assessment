@@ -41,7 +41,7 @@ const CaptureScreen = () => {
     return (
         <MainContainer id='capture-front-screen'>
             <Title
-                testID='capture-title'
+                testID='capture-front-title'
                 name={STRINGS.captureSelfie}
             />
             <Camera
@@ -53,7 +53,7 @@ const CaptureScreen = () => {
                 photo={true}
             />
             <CustomButton
-                testID='capture-back'
+                testID='capture-front'
                 name={STRINGS.capture}
                 onPress={takePhoto}
             />

@@ -9,9 +9,9 @@ const PreviewFrontScreen = () => {
     const { navigate, goBack } = useAppNavigation();
     const { selfie } = useAppContext();
     return (
-        <MainContainer id='preview-screen'>
+        <MainContainer id='preview-front-screen'>
             <Title
-                testID='preview-title'
+                testID='preview-front-title'
                 name={STRINGS.preview}
             />
             <Image
@@ -20,18 +20,18 @@ const PreviewFrontScreen = () => {
                 style={styles.image}
             />
             <View
-                testID='preview-buttons'
+                testID='preview-front-buttons'
                 style={styles.buttons}
             >
                 <ArrowButton
-                    testID='preview-back'
+                    testID='preview-front-back'
                     back={true}
                     onPress={() => {
                         goBack()
                     }}
                 />
                 <ArrowButton
-                    testID='preview-next'
+                    testID='preview-front-next'
                     back={false}
                     onPress={() => {
                         navigate(SCREENS.UPLOAD)
