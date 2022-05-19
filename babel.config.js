@@ -9,6 +9,7 @@ module.exports = {
         extensions: ['.js', '.json'],
         alias: {
           '@': './src',
+          '@assets': './src/assets',
           '@components': './src/components',
           '@constants': './src/constants',
           '@data': './src/data',
