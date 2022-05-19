@@ -1,4 +1,5 @@
 import { useAppNavigation } from '@navigation/AppNavigator';
+import { handleCameraPermission } from '@utils/permission';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Camera } from 'react-native-vision-camera';
@@ -18,11 +19,9 @@ const WelcomeScreen = () => {
                 testID='start'
                 name={STRINGS.start}
                 onPress={() => {
-                    const requestCameraPermission = async () => {
-                        await Camera.requestCameraPermission()
-                    }
-                    requestCameraPermission()
-                    navigate(SCREENS.CAPTURE)
+                    handleCameraPermission(() => {
+                        navigate(SCREENS.CAPTURE)
+                    })
                 }}
             />
         </MainContainer>

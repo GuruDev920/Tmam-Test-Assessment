@@ -38,20 +38,6 @@ const CaptureScreen = () => {
         }
     }
 
-    useEffect(() => {
-        const requestCameraPermission = async () => {
-            await Camera.requestCameraPermission()
-        }
-        const checkCameraPermission = async () => {
-            await Camera.getCameraPermissionStatus().then((status) => {
-                if (status == 'authorized') {
-                    requestCameraPermission()
-                }
-            })
-        }
-        checkCameraPermission();
-    }, [])
-
     if (device == null) return null
     return (
         <MainContainer id='capture-screen'>
