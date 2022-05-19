@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-    StyleSheet,
-    View,
-    ViewStyle,
-    Text,
+    StyleSheet, Text, ViewStyle
 } from 'react-native';
 import { COLORS, DIMENSIONS } from '../../constants';
 

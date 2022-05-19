@@ -1,18 +1,13 @@
 import { useAppContext } from '@hooks/useApp';
-import { IUseUploadFile } from '@hooks/useUploadFile';
 import { useAppNavigation } from '@navigation/AppNavigator';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 import React, { useMemo, useRef } from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { Camera, TakePhotoOptions, TakeSnapshotOptions, useCameraDevices } from 'react-native-vision-camera';
 import { CustomButton, MainContainer, Title } from '../../components';
 import { SCREENS, STRINGS } from '../../constants';
 
-export interface ICaptureFrontScreen {
-    fileInfo: IUseUploadFile;
-}
-
-const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
+const CaptureScreen = () => {
     const devices = useCameraDevices('wide-angle-camera');
     const device = devices.front;
     const { navigate, goBack } = useAppNavigation();
@@ -41,7 +36,7 @@ const CaptureScreen = ({ fileInfo }: ICaptureFrontScreen) => {
             console.error('Failed to take photo!', e);
         }
     }
-    
+
     if (device == null) return null
     return (
         <MainContainer id='capture-front-screen'>

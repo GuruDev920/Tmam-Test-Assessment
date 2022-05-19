@@ -1,13 +1,9 @@
-import { useAppContext } from '@hooks/useApp';
-import { IUseUploadFile, useUploadFile } from '@hooks/useUploadFile';
-import { useNavigation } from '@react-navigation/native';
+import { useUploadFile } from '@hooks/useUploadFile';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Circle } from 'react-native-progress';
 import { CustomButton, MainContainer, Title } from '../../components';
 import { STRINGS } from '../../constants';
-
-
 
 const UploadScreen = () => {
     const {progress, uploading, uploadFile}= useUploadFile();

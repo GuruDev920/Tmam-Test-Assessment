@@ -1,17 +1,11 @@
-import React, { useEffect, useRef, useMemo } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { Text, StyleSheet, View, Image } from 'react-native';
-import { IUseUploadFile } from '@hooks/useUploadFile';
-import { ArrowButton, Title, MainContainer } from '../../components';
-import { STRINGS, COLORS, SCREENS } from '../../constants';
 import { useAppContext } from '@hooks/useApp';
 import { useAppNavigation } from '@navigation/AppNavigator';
+import React from 'react';
+import { Image, StyleSheet, View } from 'react-native';
+import { ArrowButton, MainContainer, Title } from '../../components';
+import { SCREENS, STRINGS } from '../../constants';
 
-export interface IPreviewFrontScreen {
-    fileInfo: IUseUploadFile;
-}
-
-const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
+const PreviewFrontScreen = () => {
     const { navigate, goBack } = useAppNavigation();
     const { selfie } = useAppContext();
     return (
@@ -22,7 +16,7 @@ const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
             />
             <Image
                 testID='preview-image-front'
-                source={{ uri:selfie }}
+                source={{ uri: selfie }}
                 style={styles.image}
             />
             <View
@@ -32,14 +26,14 @@ const PreviewFrontScreen = ({ fileInfo }: IPreviewFrontScreen) => {
                 <ArrowButton
                     testID='preview-back'
                     back={true}
-                    onPress={() => { 
+                    onPress={() => {
                         goBack()
                     }}
                 />
                 <ArrowButton
                     testID='preview-next'
                     back={false}
-                    onPress={() => { 
+                    onPress={() => {
                         navigate(SCREENS.UPLOAD)
                     }}
                 />

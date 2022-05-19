@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet,
-  View,
-  ViewStyle,
-  TouchableOpacity,
+  StyleSheet, TouchableOpacity, View,
+  ViewStyle
 } from 'react-native';
-import BackIcon from '../../assets/back.svg'
-import NextIcon from '../../assets/next.svg'
-import { COLORS, DIMENSIONS } from '../../constants';
+import BackIcon from '../../assets/back.svg';
+import NextIcon from '../../assets/next.svg';
+import { COLORS } from '../../constants';
 
 const buttonHeight = 56;
 const shrinkDistance = 4;
@@ -31,7 +29,7 @@ export const ArrowButton = ({
       style={[
         styles.container,
         style,
-        {padding: (pressed && shrinkDistance) || 0},
+        { padding: (pressed && shrinkDistance) || 0 },
       ]}
       onPressIn={() => {
         setPressed(true);
@@ -46,7 +44,7 @@ export const ArrowButton = ({
       <View
         style={styles.button}>
         {
-          back ? <BackIcon/> : <NextIcon/>
+          back ? <BackIcon /> : <NextIcon />
         }
       </View>
     </TouchableOpacity>

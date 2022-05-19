@@ -1,17 +1,11 @@
 import { useAppContext } from '@hooks/useApp';
-import { IUseUploadFile } from '@hooks/useUploadFile';
 import { useAppNavigation } from '@navigation/AppNavigator';
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import { ArrowButton, MainContainer, Title } from '../../components';
 import { SCREENS, STRINGS } from '../../constants';
 
-export interface IPreviewScreen {
-    fileInfo: IUseUploadFile;
-}
-
-const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
+const PreviewScreen = () => {
     const { navigate, goBack } = useAppNavigation();
     const { photo } = useAppContext();
     return (
@@ -22,7 +16,7 @@ const PreviewScreen = ({ fileInfo }: IPreviewScreen) => {
             />
             <Image
                 testID='preview-image'
-                source={{ uri:photo }}
+                source={{ uri: photo }}
                 style={styles.image}
             />
             <View
@@ -52,7 +46,7 @@ export default PreviewScreen;
 
 const styles = StyleSheet.create({
     image: {
-        flexGrow:1
+        flexGrow: 1
     },
     buttons: {
         flexDirection: 'row',

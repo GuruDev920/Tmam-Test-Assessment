@@ -1,13 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
-import { MainContainer, CustomButton, Title } from '../../components';
-import { STRINGS, SCREENS } from '../../constants';
-import { Camera } from 'react-native-vision-camera';
 import { useAppNavigation } from '@navigation/AppNavigator';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { Camera } from 'react-native-vision-camera';
+import { CustomButton, MainContainer, Title } from '../../components';
+import { SCREENS, STRINGS } from '../../constants';
 
 const WelcomeScreen = () => {
-    const { navigate, goBack } = useAppNavigation()
+    const { navigate } = useAppNavigation()
     return (
         <MainContainer id='welcome-screen'>
             <Title

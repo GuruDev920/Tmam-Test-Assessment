@@ -1,17 +1,8 @@
 import React from 'react';
-import PreviewFrontScreen, {IPreviewFrontScreen} from './PreviewFrontScreen';
-import { IUseUploadFile, useUploadFile } from '@hooks/useUploadFile';
-
-/*
-Here, please do define the contollders && handlers
-*/
+import PreviewFrontScreen from './PreviewFrontScreen';
 
 const PreviewFrontPresenter = () => {
-  const fileInfo: IUseUploadFile = useUploadFile();
-  const previewFrontScreenProps: IPreviewFrontScreen = {
-    fileInfo,
-  };
-  return <PreviewFrontScreen {...previewFrontScreenProps} />;
+  return <PreviewFrontScreen />;
 };
 
 export default PreviewFrontPresenter;

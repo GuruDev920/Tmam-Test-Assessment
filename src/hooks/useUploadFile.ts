@@ -1,10 +1,7 @@
-import {useState} from 'react';
-import {STRINGS} from '../constants';
+import { useState } from 'react';
+import { STRINGS } from '../constants';
 import { uploadFileService } from '../data/services';
-import {IFile} from '../models';
-import {showAlert} from '../utils/alert';
-import {pickFile} from '../utils/file-picker';
-import {handlePhotoLibraryPermission} from '../utils/permission';
+import { showAlert } from '../utils/alert';
 import { useAppContext } from './useApp';
 
 export interface IUseUploadFile {

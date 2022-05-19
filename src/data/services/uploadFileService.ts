@@ -1,7 +1,6 @@
 import Axios from 'axios';
-import {Platform} from 'react-native';
-import {IFile} from '../../models';
-import {ENV} from '../../tmam-export';
+import { Platform } from 'react-native';
+import { ENV } from '../../tmam-export';
 
 export const uploadFileService = async (
   photo: string,

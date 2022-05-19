@@ -1,14 +1,11 @@
-import React, { useEffect, useRef, useMemo } from 'react';
-import { useIsFocused, useNavigation } from '@react-navigation/native';
-import { SafeAreaView, Text, StyleSheet, View, Platform } from 'react-native';
-import { IUseUploadFile } from '@hooks/useUploadFile';
-import { CustomButton, Title, MainContainer } from '../../components';
-import { Camera, useCameraDevices, TakePhotoOptions, TakeSnapshotOptions } from 'react-native-vision-camera';
-import { STRINGS, COLORS, SCREENS } from '../../constants';
 import { useAppContext } from '@hooks/useApp';
 import { useAppNavigation } from '@navigation/AppNavigator';
-
-
+import { useIsFocused } from '@react-navigation/native';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { Platform, StyleSheet } from 'react-native';
+import { Camera, TakePhotoOptions, TakeSnapshotOptions, useCameraDevices } from 'react-native-vision-camera';
+import { CustomButton, MainContainer, Title } from '../../components';
+import { SCREENS, STRINGS } from '../../constants';
 
 const CaptureScreen = () => {
     const devices = useCameraDevices('wide-angle-camera');
@@ -23,7 +20,7 @@ const CaptureScreen = () => {
             qualityPrioritization: 'speed',
             flash: flash,
             quality: 90,
-            // skipMetadata: true,
+            skipMetadata: true,
         }),
         [flash],
     );

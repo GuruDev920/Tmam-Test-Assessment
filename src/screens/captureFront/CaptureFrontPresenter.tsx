@@ -1,17 +1,8 @@
 import React from 'react';
-import CaptureFrontScreen, {ICaptureFrontScreen} from './CaptureFrontScreen';
-import { IUseUploadFile, useUploadFile } from '@hooks/useUploadFile';
-
-/*
-Here, please do define the contollders && handlers
-*/
+import CaptureFrontScreen from './CaptureFrontScreen';
 
 const CapturePresenter = () => {
-  const fileInfo: IUseUploadFile = useUploadFile();
-  const captureFrontScreenProps: ICaptureFrontScreen = {
-    fileInfo,
-  };
-  return <CaptureFrontScreen {...captureFrontScreenProps} />;
+  return <CaptureFrontScreen />;
 };
 
 export default CapturePresenter;
