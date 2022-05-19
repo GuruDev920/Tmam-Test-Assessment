@@ -25,8 +25,8 @@ const UploadScreen = () => {
             </View>
             <CustomButton
                 testID='upload'
-                name={progress == 1 ? STRINGS.done : STRINGS.upload}
-                disabled={progress > 0}
+                name={progress < 1 || uploading ? STRINGS.upload : STRINGS.done}
+                disabled={uploading || progress > 0}
                 onPress={() => {
                     uploadFile();
                 }}
