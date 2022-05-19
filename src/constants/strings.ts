@@ -20,4 +20,5 @@ export const STRINGS = {
   cameraPermissionDescription:
     'This allows BeFamily to share photos from your library and save photos to your camera roll.',
   enableLibraryAccess: 'Enable Library Access',
+  enableCameraAccess: 'Enable Camera Access',
 };
