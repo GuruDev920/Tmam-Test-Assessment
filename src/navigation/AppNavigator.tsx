@@ -1,14 +1,25 @@
-import { AppContext, useApp } from '@hooks/useApp';
-import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import {AppContext, useApp} from '@hooks/useApp';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {
+  createStackNavigator,
+  StackNavigationProp,
+} from '@react-navigation/stack';
 import React from 'react';
-import { SCREENS } from '../constants';
-import { COLORS } from '../constants/colors';
-import { AppNavigatorParamList } from '../models/navigation';
-import { Capture, CaptureFront, Preview, PreviewFront, Upload, Welcome } from '../screens';
+import {SCREENS} from '../constants';
+import {COLORS} from '../constants/colors';
+import {AppNavigatorParamList} from '../models/navigation';
+import {
+  Capture,
+  CaptureFront,
+  Preview,
+  PreviewFront,
+  Upload,
+  Welcome,
+} from '../screens';
 
 const Stack = createStackNavigator<AppNavigatorParamList>();
-export const useAppNavigation=()=>useNavigation<StackNavigationProp<AppNavigatorParamList>>();
+export const useAppNavigation = () =>
+  useNavigation<StackNavigationProp<AppNavigatorParamList>>();
 
 export const AppNavigator = () => {
   const data = useApp();

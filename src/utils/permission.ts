@@ -1,16 +1,17 @@
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 import {
   check,
   openSettings,
   PERMISSIONS,
   request,
-  RESULTS
+  RESULTS,
 } from 'react-native-permissions';
-import { STRINGS } from '../constants';
-import { showCustomAlert } from './alert';
+import {STRINGS} from '../constants';
+import {showCustomAlert} from './alert';
 
 export const handleCameraPermission = async (func: any) => {
-  const permission = Platform.OS === 'ios' ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA
+  const permission =
+    Platform.OS === 'ios' ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA;
   const status = await check(permission);
   if (status === RESULTS.GRANTED) {
     func && func();

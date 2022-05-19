@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet, TouchableOpacity, View,
-  ViewStyle
-} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
 import BackIcon from '../../assets/back.svg';
 import NextIcon from '../../assets/next.svg';
-import { COLORS } from '../../constants';
+import {COLORS} from '../../constants';
 
 const buttonHeight = 56;
 const shrinkDistance = 4;
@@ -17,11 +14,7 @@ interface IArrowButton {
   back?: boolean;
 }
 
-export const ArrowButton = ({
-  onPress,
-  style,
-  back = false,
-}: IArrowButton) => {
+export const ArrowButton = ({onPress, style, back = false}: IArrowButton) => {
   const [pressed, setPressed] = useState(false);
   return (
     <TouchableOpacity
@@ -29,7 +22,7 @@ export const ArrowButton = ({
       style={[
         styles.container,
         style,
-        { padding: (pressed && shrinkDistance) || 0 },
+        {padding: (pressed && shrinkDistance) || 0},
       ]}
       onPressIn={() => {
         setPressed(true);
@@ -41,12 +34,7 @@ export const ArrowButton = ({
       onPress={() => {
         onPress();
       }}>
-      <View
-        style={styles.button}>
-        {
-          back ? <BackIcon /> : <NextIcon />
-        }
-      </View>
+      <View style={styles.button}>{back ? <BackIcon /> : <NextIcon />}</View>
     </TouchableOpacity>
   );
 };
@@ -64,6 +52,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
-    backgroundColor: COLORS.secondary
+    backgroundColor: COLORS.secondary,
   },
 });

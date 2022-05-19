@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
-  StyleSheet, Text, TouchableOpacity, View,
-  ViewStyle
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
 } from 'react-native';
-import { COLORS, DIMENSIONS } from '../../constants';
+import {COLORS, DIMENSIONS} from '../../constants';
 
 const buttonWidth = DIMENSIONS.width - 48;
 const buttonHeight = 56;
@@ -32,7 +35,7 @@ export const CustomButton = ({
       style={[
         styles.container,
         style,
-        { width, padding: (pressed && shrinkDistance) || 0 },
+        {width, padding: (pressed && shrinkDistance) || 0},
       ]}
       onPressIn={() => {
         setPressed(true);
@@ -48,7 +51,7 @@ export const CustomButton = ({
       <View
         style={[
           styles.button,
-          { backgroundColor: disabled ? COLORS.grey : COLORS.secondary },
+          {backgroundColor: disabled ? COLORS.grey : COLORS.secondary},
         ]}>
         <Text style={styles.name}>{name}</Text>
       </View>

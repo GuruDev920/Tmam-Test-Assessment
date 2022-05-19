@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 export interface AppContextValue {
   photo: string | undefined;
@@ -10,9 +10,9 @@ export interface AppContextValue {
 export const AppContext = React.createContext<AppContextValue>({
   photo: undefined,
   setPhoto: () => undefined,
-  selfie:undefined,
+  selfie: undefined,
   setSelfie: () => undefined,
-})
+});
 
 export const useApp = () => {
   const [photo, setPhoto] = useState<string | undefined>(undefined);
@@ -21,8 +21,8 @@ export const useApp = () => {
     photo,
     setPhoto,
     selfie,
-    setSelfie
+    setSelfie,
   };
 };
 
-export const useAppContext = () => React.useContext(AppContext)
+export const useAppContext = () => React.useContext(AppContext);

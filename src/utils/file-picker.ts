@@ -1,10 +1,10 @@
-import { launchImageLibrary } from 'react-native-image-picker';
+import {launchImageLibrary} from 'react-native-image-picker';
 export const pickFile = () => {
   return new Promise((resolve, reject) => {
-    launchImageLibrary({ mediaType: 'mixed' })
-      .then((response) => {
+    launchImageLibrary({mediaType: 'mixed'})
+      .then(response => {
         if (response.assets && response.assets.length > 0) {
-          const file = response.assets[0]
+          const file = response.assets[0];
           resolve({
             name: file.fileName,
             size: file.fileSize,
